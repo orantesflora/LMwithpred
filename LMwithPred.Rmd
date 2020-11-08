@@ -14,7 +14,52 @@ This is the linear model with prediction problem.
 Predict strength scores using data from the following web site  
 
 ```{r}
-data <- read.csv(file="http://onlinestatbook.com/case_studies_rvls/physical_strength/data.txt", sep="", header=TRUE)
+dataF <- read.csv(file="http://onlinestatbook.com/case_studies_rvls/physical_strength/data.txt", sep="", header=TRUE)
+```
+
+```{r include=FALSE}
+require(tidyverse)
+require(tigerstats)
+require(rgl)
+require(knitr)
+```
+  
+###Plot scatterplot
+
+```{r}
+plot(SIMS~ARM,data=dataF) 
+```
+
+```{r}
+basicNN <- ggplot(dataF,aes(y=SIMS,x=ARM))
+```
+##Now add in scatterplot
+
+```{r}
+basicNN + geom_point() + geom_smooth(method=lm)
+```
+ 
+```{r}
+model.1 <- lm(SIMS~ARM,data=dataF)
+summary.lm(model.1)
+```  
+```{r}
+plot(SIMS~GRIP,data=dataF) 
+```
+
+```{r}
+basicNN <- ggplot(dataF,aes(y=SIMS,x=GRIP))
+```
+##Now add in scatterplot
+
+```{r}
+basicNN + geom_point() + geom_smooth(method=lm)
+```
+
+
+```{r}
+model.2 <- lm(SIMS~GRIP,data=dataF)
+summary.lm(model.2)
 ```
 
 
