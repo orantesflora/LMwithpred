@@ -70,4 +70,12 @@ predict.lm(model.2,New,interval="prediction")
 model.3 <- lm(SIMS~ARM+GRIP,data=dataF)
 summary.lm(model.3)
 predict.lm(model.3,New,interval="prediction")
+```  
+
+```{r}
+anova(model.1,model.3)
 ```
+
+##Discussion and Conclussion  
+
+The Null hypothesis is that there is no difference in the models either one is just as good as the other.The alternative would be there is a difference one is better than the other. Based on the P-value we reject the Null hypothesis and concluded as we saw in the r square that model two is better predictor than model one.
